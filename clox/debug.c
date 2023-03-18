@@ -1,0 +1,77 @@
+#include <stdio.h>
+
+#include "debug.h"
+#include "value.h"
+
+static int simpleInstruction(const char* name, int offset) {
+    printf("%s\n", name);
+    return offset + 1;
+}
+
+static int constantInstruction(const char* name, Chunk* chunk, int offset) {
+    uint8_t constant = chunk->code[offset + 1];
+    printf("%-16s %4d '", name, constant);
+    printValue(chunk->constants.values[constant]);
+    printf("'\n");
+    return offset + 2;
+}
+
+static int constantLongInstruction(const char* name, Chunk* chunk, int offset) {
+    uint32_t constant = 0;
+    constant = constant | (chunk->code[offset + 1] << 16);
+    constant = constant | (chunk->code[offset + 2] << 8);
+    constant = constant | (chunk->code[offset + 3]);
+    // printf("%d %d %d", chunk->code[offset + 1], chunk->code[offset + 2], chunk->code[offset + 3]);
+    printf("%-16s %4d '", name, constant);
+    printValue(chunk->constants.values[constant]);
+    printf("'\n");
+    return offset + 4;
+}
+
+void disassembleChunkCustomOut(Chunk* chunk, const char* name, FILE* outStream) {
+    fprintf(outStream, "== [%s] %d (%d) ==\n", name, chunk->count, chunk->capacity);
+    for (int offset = 0; offset < chunk->count;) {
+        offset = disassembleInstructionCustomOut(chunk, offset, outStream);
+    }
+}
+
+void disassembleChunk(Chunk* chunk, const char* name) {
+    disassembleChunkCustomOut(chunk, name, stdout);
+}
+
+int disassembleInstructionCustomOut(Chunk* chunk, int offset, FILE* outStream) {
+    fprintf(outStream, "%04d ", offset);
+
+    if (offset > 0 && getInstructionLine(chunk, offset) == getInstructionLine(chunk, offset - 1)) {
+        fprintf(outStream, "   | ");
+    } else {
+        fprintf(outStream, "%4d ", getInstructionLine(chunk, offset));
+    }
+    uint8_t instruction = chunk->code[offset];
+
+    switch (instruction) {
+        case OP_CONSTANT:
+            return constantInstruction("OP_CONSTANT", chunk, offset);
+        case OP_CONSTANT_LONG:
+            return constantLongInstruction("OP_CONSTANT_LONG", chunk, offset);
+        case OP_RETURN:
+            return simpleInstruction("OP_RETURN", offset);
+        case OP_ADD:
+            return simpleInstruction("OP_ADD", offset);
+        case OP_SUBSTRACT:
+            return simpleInstruction("OP_SUBSTRACT", offset);
+        case OP_MULTIPLY:
+            return simpleInstruction("OP_MULTIPLY", offset);
+        case OP_DIVIDE:
+            return simpleInstruction("OP_DIVIDE", offset);
+        case OP_NEGATE:
+            return simpleInstruction("OP_NEGATE", offset);
+        default:
+            fprintf(outStream, "Unknown opcode %d\n", instruction);
+            return offset + 1;
+    }
+}
+
+int disassembleInstruction(Chunk* chunk, int offset) {
+    return disassembleInstructionCustomOut(chunk, offset, stdout);
+}

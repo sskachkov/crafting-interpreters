@@ -1,0 +1,84 @@
+print "Hello World!";
+print "Current time is: " + clock();
+
+fun count(n) {
+    if (n > 1)
+        count(n - 1);
+    print (n);
+}
+var cnt = 5;
+print "counting to " + cnt + "with the help of mighty function";
+print "a" + count;
+count(cnt);
+print "counting done";
+var i = 12;
+while (i > 0) {
+    print (i);
+
+    i = i - 1;
+}
+print "while ended";
+var j = 0;
+for (j = 0; j < 12; j = j + 1) {
+    print j;
+}
+print "for ended";
+
+var z = 2 + 3;
+print z;
+z = z - 2;
+print z;
+z = z - 2;
+print z;
+z = z - 2;
+print z;
+z = z - 2;
+print z;
+var c;
+print c;
+print 2 - 3;
+print (12 - 3) / 4;
+print "one" + " two";
+print true;
+var a = 1;
+var b = 4;
+print (a + 3) / b;
+a = 100;
+
+if (nil) {
+    print "first line in then block executed";
+    print "second line in then block executed";
+} else {
+    print "first line in else block executed";
+    print "second line in else block executed";
+}
+var v = 14;
+if (v == 12) {
+    print "v == 12";
+} else if (v == 13) {
+    print "v == 13";
+} else if (v == 14) {
+    print "v == 14";
+} else {
+    print "else";
+}
+
+print a;
+{
+    var a =  20;
+    print a;
+    var d = 12;
+    print d;
+}
+
+var v1 = 1;
+var v2 = 2;
+var v3 = 3;
+if ((v1 + v2 == v3 and true or false) and v1 * 3 == v3) {
+    print "v1 + v2 == v3";
+} else {
+    print "v1 + v2 != v3";
+}
+
+//print d;
+print a;

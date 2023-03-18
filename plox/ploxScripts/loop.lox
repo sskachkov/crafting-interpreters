@@ -1,0 +1,16 @@
+
+fun a() {
+//var i = 100;
+var i = 200;
+
+}
+//return 100;
+var i = 300;
+
+
+
+print ("i = " + i);
+for (var i = 0; i <= 10;i = i + 1) {
+    print "i = " + i;
+}
+print ("i = " + i);

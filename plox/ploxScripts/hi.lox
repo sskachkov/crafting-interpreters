@@ -1,0 +1,38 @@
+//some comments <> != !!
+/*
+aa multiline comment
+*/
+class Breakfast {
+    init(bread, meat) {
+        this.bread = bread;
+        this.meat = meat;
+    }
+
+    serve(who) {
+        print "Enjoy your " + this.meat + " and " + this.bread + ", " + who + ".";
+    }
+}
+
+class Brunch < Breakfast {
+    drink() {
+        print("How about a Bloody Mary");
+    }
+}
+
+var breakfast = Breakfast("bacon", "toast");
+breakfast.serve("Dear reader");
+
+var brunch = Brunch("Steak", "Wheat bun");
+
+brunch.serve("Dear reader");
+brunch.drink();
+
+//some more comments right here
+
+for (var i = 0; i < 10; i = i + 1) {
+    print i;
+}
+
+var fn = 23.12;
+var fn2 = 24.47;
+

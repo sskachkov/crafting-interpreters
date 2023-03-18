@@ -1,0 +1,21 @@
+# JetBrains IDEs (CLion, IntelliJ, and PyCharm)
+.idea
+
+# CLIion CMake builds
+cmake-build-debug
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+#vscode
+.vscode
+
+#java
+*.class
+
+# OS X specific files
+.DS_Store
+
+venv

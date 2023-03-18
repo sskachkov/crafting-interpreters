@@ -1,0 +1,16 @@
+fun makeCounter() {
+    var i = 0;
+    fun count() {
+        i = i + 1;
+        print i;
+    }
+    return count;
+}
+
+var c1 = makeCounter();
+var c2 = makeCounter();
+
+c1();
+c1();
+c1();
+c2();

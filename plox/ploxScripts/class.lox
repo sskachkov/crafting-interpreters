@@ -1,0 +1,50 @@
+
+class Animal {
+    move() {
+        print "moving..";
+    }
+}
+
+class Cat < Animal {
+    init(name) {
+        this.name = name;
+        return;
+    }
+
+    bark() {
+        print ("[" + this.name + "] woof!");
+    }
+}
+
+class Dog < Cat {
+    init(name) {
+        this.name = name;
+        this.a = "a!";
+        print ("this " + this);
+        return;
+    }
+    bark() {
+        print ("[" + this.name + "] woof!");
+    }
+
+    move() {
+        super.move();
+        print "..doggly!";
+    }
+}
+
+
+
+print Dog;
+var d1 = Dog("Pooh");
+var d2 = Dog("Peach");
+var b1 = d1.bark;
+var b2 = d2.bark;
+print b1;
+print b2;
+b1();
+b2();
+d1.move();
+
+print d1.init("the Pooh");
+b1();

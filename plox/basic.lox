@@ -1,0 +1,4 @@
+var i = 1;
+var j = i + 3;
+print j;
+
