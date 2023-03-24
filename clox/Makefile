@@ -14,7 +14,7 @@ test:
 	./testClox
 
 bin: $(EXECUTABLE_SOURCES) $(COMMON_SOURCES)
-	cc $(EXECUTABLE_SOURCES) $(COMMON_SOURCES) -o clox
+	cc -g $(EXECUTABLE_SOURCES) $(COMMON_SOURCES) -o clox
 
 
 clean:

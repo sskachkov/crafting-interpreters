@@ -15,9 +15,9 @@ void test_debug_instruction_lines(void) {
 
     Chunk chunk;
     initChunk(&chunk);
-    int c1 = addConstant(&chunk, 1.3);
-    int c2 = addConstant(&chunk, 23.11);
-    int c3 = addConstant(&chunk, 9.11);
+    int c1 = addConstant(&chunk, NUMBER_VAL(1.3));
+    int c2 = addConstant(&chunk, NUMBER_VAL(23.11));
+    int c3 = addConstant(&chunk, NUMBER_VAL(9.11));
     writeChunk(&chunk, OP_CONSTANT, 123);
     writeChunk(&chunk, c1, 123);
     writeChunk(&chunk, OP_RETURN, 123);

@@ -1,6 +1,9 @@
 # JetBrains IDEs (CLion, IntelliJ, and PyCharm)
 .idea
 
+# c build related
+clox.dSYM/
+
 # CLIion CMake builds
 cmake-build-debug
 
