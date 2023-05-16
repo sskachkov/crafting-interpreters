@@ -43,7 +43,6 @@ void writeConstant(Chunk* chunk, Value value, int line) {
         int x1 = (constant) & 0xff;
         int x2 = (constant >> (8)) & 0xff;
         int x3 = (constant >> (16)) & 0xff;
-        //printf("\n%d %d %d %d \n",constant, x1, x2, x3);
         writeChunk(chunk, x3, line);
         writeChunk(chunk, x2, line);
         writeChunk(chunk, x1, line);

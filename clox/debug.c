@@ -1,6 +1,7 @@
+#include "debug.h"
+
 #include <stdio.h>
 
-#include "debug.h"
 #include "value.h"
 
 static int simpleInstruction(const char* name, int offset) {
@@ -21,7 +22,6 @@ static int constantLongInstruction(const char* name, Chunk* chunk, int offset) {
     constant = constant | (chunk->code[offset + 1] << 16);
     constant = constant | (chunk->code[offset + 2] << 8);
     constant = constant | (chunk->code[offset + 3]);
-    // printf("%d %d %d", chunk->code[offset + 1], chunk->code[offset + 2], chunk->code[offset + 3]);
     printf("%-16s %4d '", name, constant);
     printValue(chunk->constants.values[constant]);
     printf("'\n");
@@ -56,8 +56,6 @@ int disassembleInstructionCustomOut(Chunk* chunk, int offset, FILE* outStream) {
             return constantLongInstruction("OP_CONSTANT_LONG", chunk, offset);
         case OP_NIL:
             return simpleInstruction("OP_NIL", offset);
-        case OP_RETURN:
-            return simpleInstruction("OP_RETURN", offset);
         case OP_TRUE:
             return simpleInstruction("OP_TRUE", offset);
         case OP_FALSE:
@@ -78,8 +76,21 @@ int disassembleInstructionCustomOut(Chunk* chunk, int offset, FILE* outStream) {
             return simpleInstruction("OP_DIVIDE", offset);
         case OP_NOT:
             return simpleInstruction("OP_NOT", offset);
+        case OP_POP:
+            return simpleInstruction("OP_POP", offset);
+        case OP_GET_GLOBAL:
+            return constantInstruction("OP_GET_GLOBAL", chunk, offset);
+        case OP_DEFINE_GLOBAL:
+            return constantInstruction("OP_DEFINE_GLOBAL", chunk, offset);
+        case OP_SET_GLOBAL:
+            return constantInstruction("OP_SET_GLOBAL", chunk, offset);
         case OP_NEGATE:
             return simpleInstruction("OP_NEGATE", offset);
+        case OP_PRINT:
+            return simpleInstruction("OP_PRINT", offset);
+        case OP_RETURN:
+            return simpleInstruction("OP_RETURN", offset);
+
         default:
             fprintf(outStream, "Unknown opcode %d\n", instruction);
             return offset + 1;

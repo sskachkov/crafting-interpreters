@@ -18,4 +18,4 @@ bin: $(EXECUTABLE_SOURCES) $(COMMON_SOURCES)
 
 
 clean:
-	rm -f testClox clox *.o
+	rm -rf testClox clox *.o clox.dSYM
