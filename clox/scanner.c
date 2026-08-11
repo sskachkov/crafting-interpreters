@@ -29,6 +29,9 @@ static Token makeToken(TokenType type) {
     token.start = scanner.start;
     token.length = (int)(scanner.current - scanner.start);
     token.line = scanner.line;
+    // if (type == TOKEN_STRING) {
+    //     printf("%.*s\n",token.length, token.start);
+    // }
     return token;
 }
 

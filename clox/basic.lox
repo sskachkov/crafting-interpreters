@@ -1,0 +1,48 @@
+var a = 1;
+var b = 9;
+a = a + 2;
+print 10 + a + b;
+{
+  var c = 12;
+  var d = 13;
+  var e = 15;
+  var f = 17;
+  print c;
+  print e;
+  print b;
+}
+
+print b;
+
+{
+  var c = 12;
+  var d = 13;
+  var e = 15;
+  var f = 17;
+  var z = 101;
+  print c;
+  print e;
+  print b;
+  {
+    var c = 12;
+    var d = 13;
+    var e = 15;
+    var f = 17;
+    var g = 22;
+    g = g + 12;
+    print c;
+    print e;
+    print b;
+    print g;
+    print z;
+  }
+}
+if (b > 5) {
+  print "b is greater than 5";
+}
+if (b > 3) {
+  print "b is greater than 3";
+}
+
+
+

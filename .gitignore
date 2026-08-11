@@ -1,24 +1,26 @@
-# JetBrains IDEs (CLion, IntelliJ, and PyCharm)
-.idea
+# OS
+.DS_Store
 
-# c build related
-clox.dSYM/
+# Editors / IDEs
+.idea/
+.vscode/
+cmake-build-debug/
+*.swp
+*.swo
 
-# CLIion CMake builds
-cmake-build-debug
+# clox (C bytecode VM)
+/clox/clox
+/clox/testClox
+*.o
+*.dSYM/
 
-# Byte-compiled / optimized / DLL files
+# jlox (Java VM port)
+*.class
+target/
+
+# plox (Python tree-walk interpreter)
 __pycache__/
 *.py[cod]
 *$py.class
-
-#vscode
-.vscode
-
-#java
-*.class
-
-# OS X specific files
-.DS_Store
-
-venv
+.pytest_cache/
+venv/

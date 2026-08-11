@@ -1,0 +1,4 @@
+var a = 1 + 1;
+var b = 12 + 3;
+a = a + 3;
+print b + a;

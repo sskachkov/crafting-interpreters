@@ -36,8 +36,8 @@ class PloxResolver(ExprVisitor):
                 self._resolve(stmt.initializer, ctx)
             self._define(stmt.name, ctx)
         elif st == FunDeclStmt:
-            self._define(stmt.name, ctx)
             self._declare(stmt.name, ctx)
+            self._define(stmt.name, ctx)
             self._resolve_func(stmt, FuncType.FUNC, ctx)
         elif st == ExpressionStmt:
             self._resolve(stmt.expr, ctx)
